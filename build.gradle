@@ -1,0 +1,48 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.google.gms:google-services:3.0.0'
+        classpath "io.realm:realm-gradle-plugin:1.0.0"
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+task getHomeDir << {
+    println gradle.gradleHomeDir
+}
+
+// Define versions in a single place
+ext {
+    // Sdk and tools
+    minSdkVersion = 18
+    targetSdkVersion = 25
+    compileSdkVersion = 25
+    buildToolsVersion = '24.0.2'
+
+    // App dependencies
+    supportLibraryVersion = '25.0.0'
+    guavaVersion = '18.0'
+    espressoVersion = '2.2.1'
+    rxjavaVersion = '1.1.8'
+    rxandroidVersion = '1.2.1'
+    firebaseAuthVersion = '9.4.0'
+    firebaseDatabaseVersion = '9.4.0'
+    androidAnnotationsVersion = '4.1.0'
+    eventbusVersion = '3.0.0'
+}
