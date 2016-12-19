@@ -11,9 +11,6 @@ import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-
-import com.example.skeleton.R;
 
 /**
  * Created by Dominik (b00sti) Pawlik on 2016-11-15
@@ -23,12 +20,10 @@ public class ViewUtils {
 
     public static void hideKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
-        InputMethodManager imm = (InputMethodManager) activity.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-
-        if (view == null) {
-            view = new View(activity);
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static int getStatusBarHeight(Context context) {
@@ -72,18 +67,5 @@ public class ViewUtils {
         Resources resources = context.getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
         return px / ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-    }
-
-
-    public static void showNoConnectionToast(Context context) {
-        Toast.makeText(context, context.getResources().getString(R.string.connection_error), Toast.LENGTH_LONG).show();
-    }
-
-    public static void showToast(Context context, int message) {
-        Toast.makeText(context, context.getResources().getString(message), Toast.LENGTH_LONG).show();
-    }
-
-    public static void showToast(Context context, String message) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 }
