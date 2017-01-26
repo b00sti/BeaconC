@@ -49,7 +49,7 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$rootProject.androidAnnotationsVersion"
     apt "org.androidannotations:androidannotations:$rootProject.androidAnnotationsVersion"
     compile "com.google.guava:guava:$rootProject.guavaVersion"
-    compile "io.reactivex:rxjava:$rootProject.rxjavaVersion"
+    compile "io.reactivex.rxjava2:rxjava:2.0.0"
     compile "io.reactivex:rxandroid:$rootProject.rxandroidVersion"
     compile "com.android.support:design:$rootProject.supportLibraryVersion"
     compile "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"

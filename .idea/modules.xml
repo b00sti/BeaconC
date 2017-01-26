@@ -3,10 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BeaconC.iml" filepath="$PROJECT_DIR$/BeaconC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/BeaconC.iml" filepath="$PROJECT_DIR$/BeaconC.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/skeleton/skeleton.iml" filepath="$PROJECT_DIR$/skeleton/skeleton.iml" />
       <module fileurl="file://$PROJECT_DIR$/skeleton/skeleton.iml" filepath="$PROJECT_DIR$/skeleton/skeleton.iml" />
     </modules>
   </component>

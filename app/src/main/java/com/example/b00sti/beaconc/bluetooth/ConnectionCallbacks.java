@@ -11,5 +11,4 @@ public interface ConnectionCallbacks {
     void onDisconnected();
 
     void onError(String errorMessage);
-
 }
