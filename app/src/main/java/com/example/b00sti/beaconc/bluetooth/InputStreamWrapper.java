@@ -6,11 +6,8 @@ import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.concurrent.Callable;
 
 import io.reactivex.Observable;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.Subject;
 
@@ -36,34 +33,18 @@ public class InputStreamWrapper implements Closeable {
     }
 
     Observable<InputStream> getInputStream(final BluetoothSocket socket) {
-        return Observable.fromCallable(new Callable<InputStream>() {
-            @Override
-            public InputStream call() throws Exception {
-                return socket.getInputStream();
-            }
-        });
+        return Observable.fromCallable(socket::getInputStream);
     }
 
     private void openInputStream(BluetoothSocket bluetoothSocket) {
 
-        getInputStream(bluetoothSocket).map(new Function<InputStream, Boolean>() {
-            @Override
-            public Boolean apply(InputStream inputStream) throws Exception {
-                is = inputStream;
-                receiveMessages();
-                return true;
-            }
-        }).onErrorReturn(new Function<Throwable, Boolean>() {
-            @Override
-            public Boolean apply(Throwable throwable) throws Exception {
-                return false;
-            }
-        }).subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean success) throws Exception {
-                if (!success) {
-                    connectionCallbacks.onDisconnected();
-                }
+        getInputStream(bluetoothSocket).map(inputStream -> {
+            is = inputStream;
+            receiveMessages();
+            return true;
+        }).onErrorReturn(throwable -> false).subscribe(success -> {
+            if (!success) {
+                connectionCallbacks.onDisconnected();
             }
         });
     }
