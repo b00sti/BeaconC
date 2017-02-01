@@ -3,12 +3,14 @@ package com.example.b00sti.beaconc.bluetooth;
 import android.bluetooth.BluetoothSocket;
 
 import java.io.Closeable;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.concurrent.Callable;
-import java.util.function.Consumer;
 
-import rx.Observable;
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 
 /**
  * Created by Dominik (b00sti) Pawlik on 2017-01-26

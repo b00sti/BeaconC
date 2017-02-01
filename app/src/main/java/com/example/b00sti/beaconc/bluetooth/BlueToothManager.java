@@ -4,14 +4,16 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.Callable;
-import java.util.function.Consumer;
 
-import rx.Observable;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by Dominik (b00sti) Pawlik on 2017-01-26
@@ -27,8 +29,8 @@ public class BlueToothManager {
     InputStreamWrapper inputStream;
     OutputStreamWrapper outputStream;
 
-    private BlueDuff(BluetoothBundle bundle,
-                     ConnectionCallbacks c, boolean isSecure) {
+    private BlueToothManager(BluetoothBundle bundle,
+                             ConnectionCallbacks c, boolean isSecure) {
         this.bluetoothBundle = bundle;
         this.connectionCallbacks = c;
         this.isSecure = isSecure;
@@ -61,7 +63,7 @@ public class BlueToothManager {
                     }
                 }, new Consumer<Throwable>() {
                     @Override
-                    public void accept(Throwable throwable) throws Exception {
+                    public void accept(Throwable throwable) {
                         connectionCallbacks.onError(throwable.getMessage());
                     }
                 });
@@ -135,8 +137,8 @@ public class BlueToothManager {
             return this;
         }
 
-        public BlueDuff build() {
-            return new BlueDuff(new BluetoothBundle(charsetString, bluetoothSleep, bufferCapacity), connectionCallbacks, isSecureCommunication);
+        public BlueToothManager build() {
+            return new BlueToothManager(new BluetoothBundle(charsetString, bluetoothSleep, bufferCapacity), connectionCallbacks, isSecureCommunication);
         }
     }
 }
