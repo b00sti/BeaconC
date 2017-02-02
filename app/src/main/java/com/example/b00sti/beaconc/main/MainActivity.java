@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Bean
     NavigationManager navigationManager;
+
     private Handler handler = new Handler();
 
     @AfterInject
@@ -42,7 +43,57 @@ public class MainActivity extends AppCompatActivity {
      * Reload activity
      */
     public void reload() {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, MainActivity_.class));
         finish();
     }
+
+    /**
+     * Update the bottom navigation colored param
+     */
+    public void updateBottomNavigationColor(boolean isColored) {
+        navigationManager.updateBottomNavigationColor(isColored);
+    }
+
+    /**
+     * Return if the bottom navigation is colored
+     */
+    public boolean isBottomNavigationColored() {
+        return navigationManager.isBottomNavigationColored();
+    }
+
+    /**
+     * Add or remove items of the bottom navigation
+     */
+    public void updateBottomNavigationItems(boolean addItems) {
+        navigationManager.updateBottomNavigationItems(addItems);
+    }
+
+    /**
+     * Show or hide the bottom navigation with animation
+     */
+    public void showOrHideBottomNavigation(boolean show) {
+        navigationManager.showOrHideBottomNavigation(show);
+    }
+
+    /**
+     * Show or hide selected item background
+     */
+    public void updateSelectedBackgroundVisibility(boolean isVisible) {
+        navigationManager.updateSelectedBackgroundVisibility(isVisible);
+    }
+
+    /**
+     * Show or hide selected item background
+     */
+    public void setForceTitleHide(boolean forceTitleHide) {
+        navigationManager.setForceTitleHide(forceTitleHide);
+    }
+
+    /**
+     * Return the number of items in the bottom navigation
+     */
+    public int getBottomNavigationNbItems() {
+        return navigationManager.getBottomNavigationNbItems();
+    }
+
 }

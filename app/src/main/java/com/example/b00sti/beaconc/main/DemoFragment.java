@@ -32,6 +32,7 @@ public class DemoFragment extends BaseRefreshableFragment {
     private FrameLayout fragmentContainer;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
+    //private MainActivity activity;
 
     /**
      * Create a new instance of the fragment
@@ -57,6 +58,14 @@ public class DemoFragment extends BaseRefreshableFragment {
             return view;
         }
     }
+/*
+    @Override
+    public void onAttach(Activity context) {
+        super.onAttach(context);
+        if (context != null) {
+            activity = (MainActivity) context;
+        }
+    }*/
 
     /**
      * Init demo settings
