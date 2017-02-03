@@ -22,21 +22,29 @@ import android.widget.FrameLayout;
 import com.example.b00sti.beaconc.R;
 import com.example.b00sti.beaconc.navigation.BaseRefreshableFragment;
 
+import org.androidannotations.annotations.EFragment;
+import org.androidannotations.annotations.RootContext;
+import org.androidannotations.annotations.ViewById;
+
 import java.util.ArrayList;
 
-/**
- *
- */
+@EFragment
 public class DemoFragment extends BaseRefreshableFragment {
+
+    @RootContext
+    MainActivity demoActivity;
+
+    @ViewById(R.id.fragment_demo_switch_colored) SwitchCompat switchColored;
+    @ViewById(R.id.fragment_demo_switch_five_items) SwitchCompat switchFiveItems;
+    @ViewById(R.id.fragment_demo_show_hide) SwitchCompat showHideBottomNavigation;
+    @ViewById(R.id.fragment_demo_selected_background) SwitchCompat showSelectedBackground;
+    @ViewById(R.id.fragment_demo_force_title_hide) SwitchCompat switchForceTitleHide;
+    @ViewById(R.id.fragment_demo_translucent_navigation) SwitchCompat switchTranslucentNavigation;
 
     private FrameLayout fragmentContainer;
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
-    //private MainActivity activity;
 
-    /**
-     * Create a new instance of the fragment
-     */
     public static DemoFragment newInstance(int index) {
         DemoFragment fragment = new DemoFragment();
         Bundle b = new Bundle();
@@ -58,27 +66,13 @@ public class DemoFragment extends BaseRefreshableFragment {
             return view;
         }
     }
-/*
-    @Override
-    public void onAttach(Activity context) {
-        super.onAttach(context);
-        if (context != null) {
-            activity = (MainActivity) context;
-        }
-    }*/
+
 
     /**
      * Init demo settings
      */
     private void initDemoSettings(View view) {
 
-        final MainActivity demoActivity = (MainActivity) getActivity();
-        final SwitchCompat switchColored = (SwitchCompat) view.findViewById(R.id.fragment_demo_switch_colored);
-        final SwitchCompat switchFiveItems = (SwitchCompat) view.findViewById(R.id.fragment_demo_switch_five_items);
-        final SwitchCompat showHideBottomNavigation = (SwitchCompat) view.findViewById(R.id.fragment_demo_show_hide);
-        final SwitchCompat showSelectedBackground = (SwitchCompat) view.findViewById(R.id.fragment_demo_selected_background);
-        final SwitchCompat switchForceTitleHide = (SwitchCompat) view.findViewById(R.id.fragment_demo_force_title_hide);
-        final SwitchCompat switchTranslucentNavigation = (SwitchCompat) view.findViewById(R.id.fragment_demo_translucent_navigation);
 
         switchColored.setChecked(demoActivity.isBottomNavigationColored());
         switchFiveItems.setChecked(demoActivity.getBottomNavigationNbItems() == 5);
