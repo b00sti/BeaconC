@@ -67,10 +67,6 @@ public class DemoFragment extends BaseRefreshableFragment {
         }
     }
 
-
-    /**
-     * Init demo settings
-     */
     private void initDemoSettings(View view) {
 
 
