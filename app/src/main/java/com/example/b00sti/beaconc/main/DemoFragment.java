@@ -7,13 +7,10 @@ package com.example.b00sti.beaconc.main;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CompoundButton;
@@ -21,17 +18,19 @@ import android.widget.FrameLayout;
 
 import com.example.b00sti.beaconc.R;
 import com.example.b00sti.beaconc.navigation.BaseRefreshableFragment;
+import com.example.skeleton.android_utils.util.CLog;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.RootContext;
 import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 
-@EFragment
+import static com.google.android.gms.internal.zzs.TAG;
+
+@EFragment(R.layout.fragment_demo_settings)
 public class DemoFragment extends BaseRefreshableFragment {
 
-    @RootContext
     MainActivity demoActivity;
 
     @ViewById(R.id.fragment_demo_switch_colored) SwitchCompat switchColored;
@@ -53,7 +52,7 @@ public class DemoFragment extends BaseRefreshableFragment {
         return fragment;
     }
 
-    @Nullable
+/*    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (getArguments().getInt("index", 0) == 0) {
@@ -65,6 +64,15 @@ public class DemoFragment extends BaseRefreshableFragment {
             initDemoList(view);
             return view;
         }
+    }*/
+
+    @AfterInject
+    void init() {
+        CLog.d(TAG, "init: activity title", getActivity().getTitle());
+        if (getActivity() instanceof MainActivity) {
+            demoActivity = (MainActivity) getActivity();
+        }
+        initDemoSettings(getView());
     }
 
     private void initDemoSettings(View view) {

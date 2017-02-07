@@ -64,5 +64,6 @@ dependencies {
     compile 'com.aurelhubert:ahbottomnavigation:2.0.4'
     apt "org.projectlombok:lombok:1.16.12"
     compile "org.projectlombok:lombok:1.16.12"
+    compile project(path: ':skeleton')
 }
 

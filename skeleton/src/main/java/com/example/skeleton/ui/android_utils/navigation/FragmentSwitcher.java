@@ -21,7 +21,7 @@ public class FragmentSwitcher {
                 transaction.addSharedElement(sharedElement.view, sharedElement.name);
             }
         }
-        transaction.setCustomAnimations(params.getCustomEnterAnim(), params.getCustomExitAnim());
+        //transaction.setCustomAnimations(params.getCustomEnterAnim(), params.getCustomExitAnim());
         transaction.replace(params.getFrameId(), params.getFragment(), params.getTag());
         if (params.isCommitAllowingStateLoss()) {
             transaction.commitAllowingStateLoss();

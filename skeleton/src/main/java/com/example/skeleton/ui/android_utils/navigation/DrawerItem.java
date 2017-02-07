@@ -6,6 +6,7 @@ package com.example.skeleton.ui.android_utils.navigation;
 
 public class DrawerItem {
 
+/*
     @DrawerUtils.DrawerTab
     private int tabId;
 
@@ -50,5 +51,6 @@ public class DrawerItem {
         this.counter = counter;
     }
 
+*/
 
 }

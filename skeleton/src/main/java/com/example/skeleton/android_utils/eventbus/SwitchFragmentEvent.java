@@ -1,10 +1,5 @@
 package com.example.skeleton.android_utils.eventbus;
 
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-
-import com.example.skeleton.android_utils.navigation.drawer.DrawerUtils;
-
 /**
  * Created by Dominik (b00sti) Pawlik on 2016-11-03
  */
@@ -12,7 +7,7 @@ import com.example.skeleton.android_utils.navigation.drawer.DrawerUtils;
 @SuppressWarnings("unused")
 public class SwitchFragmentEvent {
 
-    @DrawerUtils.DrawerTab private int drawerSelectedTabId = DrawerUtils.NO_TAB;
+/*    @DrawerUtils.DrawerTab private int drawerSelectedTabId = DrawerUtils.NO_TAB;
     private Fragment targetFragment;
     private Bundle extras;
 
@@ -38,5 +33,5 @@ public class SwitchFragmentEvent {
 
     public Bundle getExtras() {
         return extras;
-    }
+    }*/
 }

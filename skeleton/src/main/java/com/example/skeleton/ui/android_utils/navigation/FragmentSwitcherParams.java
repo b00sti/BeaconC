@@ -5,8 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.example.b00sti.tripchallenge.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,8 +21,8 @@ public class FragmentSwitcherParams {
     private String tag;
     private Bundle bundle = null;
     private boolean commitAllowingStateLoss = false;
-    private int customEnterAnim = R.anim.alpha_in;
-    private int customExitAnim = R.anim.alpha_out;
+    /*    private int customEnterAnim = R.anim.alpha_in;
+        private int customExitAnim = R.anim.alpha_out;*/
     private List<SharedElement> sharedElements = new ArrayList<>();
 
     public FragmentSwitcherParams(@NonNull FragmentManager fragmentManager, @NonNull Fragment targetFragment, int frameId) {
@@ -74,22 +72,22 @@ public class FragmentSwitcherParams {
         this.commitAllowingStateLoss = commitAllowingStateLoss;
     }
 
-    public int getCustomEnterAnim() {
-        return customEnterAnim;
-    }
+    /*  public int getCustomEnterAnim() {
+          return customEnterAnim;
+      }
 
-    public void setCustomEnterAnim(int customEnterAnim) {
-        this.customEnterAnim = customEnterAnim;
-    }
+      public void setCustomEnterAnim(int customEnterAnim) {
+          this.customEnterAnim = customEnterAnim;
+      }
 
-    public int getCustomExitAnim() {
-        return customExitAnim;
-    }
+      public int getCustomExitAnim() {
+          return customExitAnim;
+      }
 
-    public void setCustomExitAnim(int customExitAnim) {
-        this.customExitAnim = customExitAnim;
-    }
-
+      public void setCustomExitAnim(int customExitAnim) {
+          this.customExitAnim = customExitAnim;
+      }
+  */
     public List<SharedElement> getSharedElements() {
         return sharedElements;
     }

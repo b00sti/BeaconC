@@ -1,30 +1,11 @@
 package com.example.skeleton.ui.android_utils.navigation;
 
-import android.content.Context;
-import android.support.annotation.IntDef;
-import android.support.v4.app.Fragment;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-
-import com.example.b00sti.tripchallenge.R;
-import com.example.b00sti.tripchallenge.ui_settings.SettingsFragment;
-import com.example.skeleton.ui.android_utils.eventbus.SwitchFragmentEvent;
-import com.example.skeleton.ui.ui.recyclers.RecyclerItemClickListener;
-
-import org.greenrobot.eventbus.EventBus;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by Dominik (b00sti) Pawlik on 2016-11-03
  */
 
 public class DrawerUtils {
-    public static final int NO_TAB = -1;
+/*    public static final int NO_TAB = -1;
     public static final int DASHBOARD_TAB = 0;
     public static final int SETTINGS_TAB = 1;
 
@@ -74,6 +55,6 @@ public class DrawerUtils {
             DASHBOARD_TAB,
     })
     public @interface DrawerTab {
-    }
+    }*/
 
 }

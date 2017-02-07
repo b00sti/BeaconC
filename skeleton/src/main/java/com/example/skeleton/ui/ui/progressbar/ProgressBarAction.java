@@ -5,13 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import rx.functions.Action0;
+import io.reactivex.functions.Action;
 
 /**
  * Created by Dominik (b00sti) Pawlik on 2016-11-15
  */
 
-public class ProgressBarAction implements Action0 {
+public class ProgressBarAction implements Action {
 
     @Nullable
     private View progressBar;
@@ -31,11 +31,6 @@ public class ProgressBarAction implements Action0 {
         this.show = show;
     }
 
-    @Override
-    public void call() {
-        showProgressBar();
-    }
-
     public void showProgressBar() {
         showProgressBar(show);
     }
@@ -52,4 +47,8 @@ public class ProgressBarAction implements Action0 {
 
     }
 
+    @Override
+    public void run() throws Exception {
+        showProgressBar();
+    }
 }

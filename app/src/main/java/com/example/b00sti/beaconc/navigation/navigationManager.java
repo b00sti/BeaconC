@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 
@@ -14,15 +13,19 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.example.b00sti.beaconc.R;
 import com.example.b00sti.beaconc.main.DemoViewPagerAdapter;
+import com.example.b00sti.beaconc.main.MainActivity;
+import com.example.skeleton.android_utils.util.CLog;
 
+import org.androidannotations.annotations.AfterInject;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
-import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.IntArrayRes;
 
 import java.util.ArrayList;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
+import static com.google.android.gms.internal.zzs.TAG;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 
 /**
  * Created by Dominik (b00sti) Pawlik on 2017-02-01
@@ -31,14 +34,14 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 @EBean
 public class NavigationManager {
 
-    @ViewById(R.id.view_pager) AHBottomNavigationViewPager viewPager;
-    @ViewById(R.id.bottom_navigation) AHBottomNavigation bottomNavigation;
-    @ViewById(R.id.floating_action_button) FloatingActionButton floatingActionButton;
+    AHBottomNavigationViewPager viewPager;
+    AHBottomNavigation bottomNavigation;
+    FloatingActionButton floatingActionButton;
 
     @IntArrayRes(R.array.tab_colors)
     int[] tabColors;
     @RootContext
-    AppCompatActivity ctx;
+    MainActivity ctx;
     private boolean useMenuResource = true;
     private AHBottomNavigationAdapter navigationAdapter;
     private ArrayList<AHBottomNavigationItem> bottomNavigationItems = new ArrayList<>();
@@ -46,7 +49,17 @@ public class NavigationManager {
     private BaseRefreshableFragment currentFragment;
 
     NavigationManager() {
+    }
 
+    @AfterInject
+    void init() {
+        CLog.d(TAG, "init: context is", ctx.getComponentName().toString());
+        viewPager = (AHBottomNavigationViewPager) ctx.findViewById(R.id.view_pager);
+        bottomNavigation = (AHBottomNavigation) ctx.findViewById(R.id.bottom_navigation);
+        floatingActionButton = (FloatingActionButton) ctx.findViewById(R.id.floating_action_button);
+        checkNotNull(viewPager);
+        checkNotNull(bottomNavigation);
+        checkNotNull(floatingActionButton);
     }
 
     void prepareNavigationItems() {
@@ -62,7 +75,7 @@ public class NavigationManager {
     public void initUI(AHonTabSelectedListener aHonTabSelectedListener) {
 
         if (useMenuResource) {
-            tabColors = getApplicationContext().getResources().getIntArray(R.array.tab_colors);
+            tabColors = ctx.getResources().getIntArray(R.array.tab_colors);
             navigationAdapter = new AHBottomNavigationAdapter(ctx, R.menu.bottom_navigation_menu_3);
             navigationAdapter.setupWithBottomNavigation(bottomNavigation, tabColors);
         } else {
