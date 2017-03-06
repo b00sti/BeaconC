@@ -12,6 +12,7 @@ android {
         applicationId "com.example.b00sti.beaconc"
         minSdkVersion 18
         targetSdkVersion 25
+        multiDexEnabled = true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"

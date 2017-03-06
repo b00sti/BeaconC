@@ -3,24 +3,53 @@ package com.example.b00sti.beaconc.main;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager;
 import com.example.b00sti.beaconc.R;
 import com.example.b00sti.beaconc.navigation.NavigationManager;
+import com.example.skeleton.android_utils.util.CLog;
 
 import org.androidannotations.annotations.AfterInject;
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.ViewById;
+
+import lombok.Getter;
 
 @EActivity(R.layout.activity_home)
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+
+    @Getter
+    @ViewById(R.id.view_pager) public AHBottomNavigationViewPager viewPager;
+
+    @Getter
+    @ViewById(R.id.bottom_navigation) public AHBottomNavigation bottomNavigation;
+
+    @Getter
+    @ViewById(R.id.floating_action_button) public FloatingActionButton floatingActionButton;
 
     @Bean
     NavigationManager navigationManager;
 
-    private Handler handler = new Handler();
+    @AfterViews
+    void logafterViews() {
+        CLog.d(TAG, "logafterViews: ", viewPager);
+    }
 
     @AfterInject
+    void logafterInjects() {
+        CLog.d(TAG, "logafterInjects: ", viewPager);
+    }
+
+    private Handler handler = new Handler();
+
+    @AfterViews
     void init() {
         boolean enabledTranslucentNavigation = getSharedPreferences("shared", Context.MODE_PRIVATE)
                 .getBoolean("translucentNavigation", false);
